@@ -1,6 +1,7 @@
 package com.resitechpro.showcaseservice.domain.dto.request.residence;
 
 import com.resitechpro.showcaseservice.domain.dto.request.image.ImageRequestDto;
+import com.resitechpro.showcaseservice.domain.dto.request.user.UserRequestDto;
 import com.resitechpro.showcaseservice.domain.entity.Residence;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -32,5 +33,6 @@ public class ResidenceRequestDto implements Serializable {
     private  Long longitude;
     @NotNull(message = "Latitude is required")
     private  Long latitude;
+    private UserRequestDto owner;
     private List<ImageRequestDto> images;
 }

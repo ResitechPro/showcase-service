@@ -9,9 +9,7 @@ import org.mapstruct.*;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface PropertyMapper {
 
-    @Mapping(target = "building.label", source = "buildingLabel")
     Property toProperty(PropertyRequestDto propertyRequestDto);
-
     PropertyResponseDto toDto(Property property);
     OnlyPropertyResponseDto toOnlyPropertyDto(Property property);
 }

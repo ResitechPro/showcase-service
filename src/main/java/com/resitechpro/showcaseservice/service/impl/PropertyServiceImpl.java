@@ -7,6 +7,7 @@ import com.resitechpro.showcaseservice.exception.customexceptions.ValidationExce
 import com.resitechpro.showcaseservice.repository.BuildingRepository;
 import com.resitechpro.showcaseservice.repository.ImageRepository;
 import com.resitechpro.showcaseservice.repository.PropertyRepository;
+import com.resitechpro.showcaseservice.service.BuildingService;
 import com.resitechpro.showcaseservice.service.PropertyService;
 import com.resitechpro.showcaseservice.utils.ErrorMessage;
 import org.springframework.stereotype.Component;
@@ -18,11 +19,18 @@ import java.util.Optional;
 @Component
 public class PropertyServiceImpl implements PropertyService {
     private final PropertyRepository propertyRepository;
+    private final ImageRepository imageRepository;
+    private final BuildingService buildingService;
+
     public PropertyServiceImpl
     (
-        PropertyRepository propertyRepository
+        PropertyRepository propertyRepository,
+        ImageRepository imageRepository,
+        BuildingService buildingService
     ) {
         this.propertyRepository = propertyRepository;
+        this.imageRepository = imageRepository;
+        this.buildingService = buildingService;
     }
 
     @Override
@@ -37,6 +45,12 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public Property createProperty(Property property) throws ValidationException {
+        property.setBuilding(
+            buildingService.createBuilding(property.getBuilding())
+        );
+        property.setImages(
+                imageRepository.saveAll(property.getImages())
+        );
         return propertyRepository.save(property);
     }
 }

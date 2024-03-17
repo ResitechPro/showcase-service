@@ -38,7 +38,6 @@ public class PropertyRequestDto implements Serializable {
     private String floorNumber;
     @NotNull(message = "Rent price is required")
     private String rentValue;
-    private String buildingLabel;
 
     private BuildingRequestDto building;
     private List<ImageRequestDto> images;

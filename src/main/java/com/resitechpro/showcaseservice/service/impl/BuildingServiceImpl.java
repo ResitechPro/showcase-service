@@ -8,6 +8,7 @@ import com.resitechpro.showcaseservice.repository.BuildingRepository;
 import com.resitechpro.showcaseservice.repository.ImageRepository;
 import com.resitechpro.showcaseservice.repository.ResidenceRepository;
 import com.resitechpro.showcaseservice.service.BuildingService;
+import com.resitechpro.showcaseservice.service.ResidenceService;
 import com.resitechpro.showcaseservice.utils.ErrorMessage;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +21,19 @@ public class BuildingServiceImpl implements BuildingService {
 
     private final BuildingRepository buildingRepository;
 
+    private final ImageRepository imageRepository;
+
+    private final ResidenceService residenceService;
 
     public BuildingServiceImpl
     (
-        BuildingRepository buildingRepository
+        BuildingRepository buildingRepository,
+        ImageRepository imageRepository,
+        ResidenceService residenceService
     ) {
         this.buildingRepository = buildingRepository;
+        this.imageRepository = imageRepository;
+        this.residenceService = residenceService;
     }
     @Override
     public List<Building> getAllBuildings() {
@@ -34,6 +42,12 @@ public class BuildingServiceImpl implements BuildingService {
 
     @Override
     public Building createBuilding(Building building) throws ValidationException {
+        building.setResidence(
+            residenceService.createResidence(building.getResidence())
+        );
+        building.setImages(
+                imageRepository.saveAll(building.getImages())
+        );
         return buildingRepository.save(building);
     }
 }

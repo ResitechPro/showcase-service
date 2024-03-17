@@ -5,6 +5,7 @@ import com.resitechpro.showcaseservice.domain.dto.response.building.BuildingResp
 import com.resitechpro.showcaseservice.domain.mapper.BuildingMapper;
 import com.resitechpro.showcaseservice.exception.customexceptions.ValidationException;
 import com.resitechpro.showcaseservice.service.BuildingService;
+import com.resitechpro.showcaseservice.service.ResidenceService;
 import com.resitechpro.showcaseservice.utils.Response;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;

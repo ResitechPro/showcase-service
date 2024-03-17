@@ -8,7 +8,6 @@ import org.mapstruct.*;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface BuildingMapper {
 
-    @Mapping(target = "residence.label", source = "residenceLabel")
     Building toBuilding(BuildingRequestDto buildingResponseDto);
 
     BuildingResponseDto toDto(Building building);
