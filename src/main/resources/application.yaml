@@ -1,0 +1,34 @@
+server:
+  port: 8083
+  error:
+      include-message: always
+      include-binding-errors: always
+spring:
+  application:
+    name: showcase-service
+  jpa:
+    hibernate:
+      ddl-auto: none # not working !
+    properties:
+      # temporarily solution to prevent hibernate from creating tables , (ddl-auto: none) will not work
+      hibernate:
+        hbm2ddl:
+          auto: none
+        # ----------------------
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/showcase_service # use this if you want to run the app locally , if no postgresql installed , use docker-compose in _resources/docker
+    username: idder
+    password: idderjamh
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.public.changelog-master.yml
+  kafka:
+    bootstrap-servers: localhost:9092
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

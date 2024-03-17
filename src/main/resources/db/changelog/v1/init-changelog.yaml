@@ -1,0 +1,371 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1710678316727-1
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_buildings
+                  name: id
+                  type: VARCHAR(255)
+              - column:
+                  name: label
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: number_floors
+                  type: INT
+              - column:
+                  name: residence_id
+                  type: VARCHAR(255)
+            tableName: buildings
+  - changeSet:
+      id: 1710678316727-2
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: building_id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: images_id
+                  type: BIGINT
+            tableName: buildings_images
+  - changeSet:
+      id: 1710678316727-3
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_images
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: url
+                  type: VARCHAR(255)
+            tableName: images
+  - changeSet:
+      id: 1710678316727-4
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_properties
+                  name: id
+                  type: VARCHAR(255)
+              - column:
+                  name: label
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: property_type
+                  type: SMALLINT
+              - column:
+                  name: surface
+                  type: BIGINT
+              - column:
+                  name: number_rooms
+                  type: INT
+              - column:
+                  name: number_bathrooms
+                  type: INT
+              - column:
+                  name: number_bedrooms
+                  type: INT
+              - column:
+                  name: number_windows
+                  type: INT
+              - column:
+                  name: floor_number
+                  type: VARCHAR(255)
+              - column:
+                  name: rent_value
+                  type: VARCHAR(255)
+              - column:
+                  name: building_id
+                  type: VARCHAR(255)
+            tableName: properties
+  - changeSet:
+      id: 1710678316727-5
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: property_id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: images_id
+                  type: BIGINT
+            tableName: properties_images
+  - changeSet:
+      id: 1710678316727-6
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_residences
+                  name: id
+                  type: VARCHAR(255)
+              - column:
+                  name: label
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: location
+                  type: VARCHAR(255)
+              - column:
+                  name: surface
+                  type: BIGINT
+              - column:
+                  name: longitude
+                  type: BIGINT
+              - column:
+                  name: latitude
+                  type: BIGINT
+              - column:
+                  name: owner_id
+                  type: VARCHAR(255)
+            tableName: residences
+  - changeSet:
+      id: 1710678316727-7
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: residence_id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: images_id
+                  type: BIGINT
+            tableName: residences_images
+  - changeSet:
+      id: 1710678316727-8
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_users
+                  name: id
+                  type: VARCHAR(255)
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: organization_name
+                  type: VARCHAR(255)
+              - column:
+                  name: personal_email
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  name: image_id
+                  type: BIGINT
+            tableName: users
+  - changeSet:
+      id: 1710678316727-9
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: images_id
+            constraintName: uc_buildings_images_images
+            tableName: buildings_images
+  - changeSet:
+      id: 1710678316727-10
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: images_id
+            constraintName: uc_properties_images_images
+            tableName: properties_images
+  - changeSet:
+      id: 1710678316727-11
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: images_id
+            constraintName: uc_residences_images_images
+            tableName: residences_images
+  - changeSet:
+      id: 1710678316727-12
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: personal_email
+            constraintName: uc_users_personal_email
+            tableName: users
+  - changeSet:
+      id: 1710678316727-13
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: residence_id
+            baseTableName: buildings
+            constraintName: FK_BUILDINGS_ON_RESIDENCE
+            referencedColumnNames: id
+            referencedTableName: residences
+  - changeSet:
+      id: 1710678316727-14
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: building_id
+            baseTableName: properties
+            constraintName: FK_PROPERTIES_ON_BUILDING
+            referencedColumnNames: id
+            referencedTableName: buildings
+  - changeSet:
+      id: 1710678316727-15
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: owner_id
+            baseTableName: residences
+            constraintName: FK_RESIDENCES_ON_OWNER
+            referencedColumnNames: id
+            referencedTableName: users
+  - changeSet:
+      id: 1710678316727-16
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: image_id
+            baseTableName: users
+            constraintName: FK_USERS_ON_IMAGE
+            referencedColumnNames: id
+            referencedTableName: images
+  - changeSet:
+      id: 1710678316727-17
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: building_id
+            baseTableName: buildings_images
+            constraintName: fk_buiima_on_building
+            referencedColumnNames: id
+            referencedTableName: buildings
+  - changeSet:
+      id: 1710678316727-18
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: images_id
+            baseTableName: buildings_images
+            constraintName: fk_buiima_on_image
+            referencedColumnNames: id
+            referencedTableName: images
+  - changeSet:
+      id: 1710678316727-19
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: images_id
+            baseTableName: properties_images
+            constraintName: fk_proima_on_image
+            referencedColumnNames: id
+            referencedTableName: images
+  - changeSet:
+      id: 1710678316727-20
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: property_id
+            baseTableName: properties_images
+            constraintName: fk_proima_on_property
+            referencedColumnNames: id
+            referencedTableName: properties
+  - changeSet:
+      id: 1710678316727-21
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: images_id
+            baseTableName: residences_images
+            constraintName: fk_resima_on_image
+            referencedColumnNames: id
+            referencedTableName: images
+  - changeSet:
+      id: 1710678316727-22
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: residence_id
+            baseTableName: residences_images
+            constraintName: fk_resima_on_residence
+            referencedColumnNames: id
+            referencedTableName: residences
+
