@@ -42,12 +42,16 @@ public class BuildingServiceImpl implements BuildingService {
 
     @Override
     public Building createBuilding(Building building) throws ValidationException {
-        building.setResidence(
-            residenceService.createResidence(building.getResidence())
-        );
-        building.setImages(
-                imageRepository.saveAll(building.getImages())
-        );
+        if(building.getResidence() != null){
+            building.setResidence(
+                    residenceService.createResidence(building.getResidence())
+            );
+        }
+        if( ! building.getImages().isEmpty()){
+            building.setImages(
+                    imageRepository.saveAll(building.getImages())
+            );
+        }
         return buildingRepository.save(building);
     }
 }

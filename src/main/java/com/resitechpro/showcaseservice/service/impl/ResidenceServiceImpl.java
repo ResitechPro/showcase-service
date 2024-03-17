@@ -38,9 +38,11 @@ public class ResidenceServiceImpl implements ResidenceService {
                         userRepository.save(residence.getOwner())
                 );
         }
-        residence.setImages(
-            imageRepository.saveAll(residence.getImages())
-        );
+        if( ! residence.getImages().isEmpty()){
+            residence.setImages(
+                    imageRepository.saveAll(residence.getImages())
+            );
+        }
         return residenceRepository.save(residence);
     }
 }

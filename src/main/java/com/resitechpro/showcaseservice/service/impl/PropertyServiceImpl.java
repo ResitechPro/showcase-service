@@ -45,12 +45,16 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public Property createProperty(Property property) throws ValidationException {
-        property.setBuilding(
-            buildingService.createBuilding(property.getBuilding())
-        );
-        property.setImages(
-                imageRepository.saveAll(property.getImages())
-        );
+        if(property.getBuilding() != null){
+            property.setBuilding(
+                    buildingService.createBuilding(property.getBuilding())
+            );
+        }
+        if( ! property.getImages().isEmpty()){
+            property.setImages(
+                    imageRepository.saveAll(property.getImages())
+            );
+        }
         return propertyRepository.save(property);
     }
 }
