@@ -1,0 +1,15 @@
+package com.resitechpro.domain.mapper;
+
+import com.resitechpro.domain.dto.request.building.BuildingRequestDto;
+import com.resitechpro.domain.dto.response.building.BuildingResponseDto;
+import com.resitechpro.domain.entity.Building;
+import org.mapstruct.*;
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+public interface BuildingMapper {
+
+    Building toBuilding(BuildingRequestDto buildingResponseDto);
+
+    BuildingResponseDto toDto(Building building);
+
+}
