@@ -37,8 +37,6 @@ public class BuildingServiceImpl implements BuildingService {
 
     @Override
     public Building createBuilding(Building building)  {
-        /*Optional<Building> optionalBuilding = buildingRepository.findById(building.getId());
-        if(optionalBuilding.isPresent()) return optionalBuilding.get();*/
         if(building.getResidence() != null){
             building.setResidence(
                     residenceService.createResidence(building.getResidence())

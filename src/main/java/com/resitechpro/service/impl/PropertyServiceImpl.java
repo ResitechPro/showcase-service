@@ -40,8 +40,6 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public Property createProperty(Property property) {
-        /*Optional<Property> optionalProperty = propertyRepository.findById(property.getId());
-        if(optionalProperty.isPresent()) return optionalProperty.get();*/
         if(property.getBuilding() != null){
             property.setBuilding(
                     buildingService.createBuilding(property.getBuilding())

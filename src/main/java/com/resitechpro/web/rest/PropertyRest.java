@@ -1,4 +1,4 @@
-package com.resitechpro.rest;
+package com.resitechpro.web.rest;
 
 import com.resitechpro.domain.dto.request.property.PropertyRequestDto;
 import com.resitechpro.domain.dto.response.property.OnlyPropertyResponseDto;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/properties")
+@RequestMapping("/api/v1/showcase/properties")
 public class PropertyRest {
 
     private final PropertyService propertyService;

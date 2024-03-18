@@ -1,4 +1,4 @@
-package com.resitechpro.rest;
+package com.resitechpro.web.rest;
 
 import com.resitechpro.domain.dto.request.building.BuildingRequestDto;
 import com.resitechpro.domain.dto.response.building.BuildingResponseDto;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/buildings")
+@RequestMapping("/api/v1/showcase/buildings")
 public class BuildingRest {
 
     private final BuildingService buildingService;

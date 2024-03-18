@@ -1,4 +1,4 @@
-package com.resitechpro.rest;
+package com.resitechpro.web.rest;
 
 import com.resitechpro.domain.dto.request.residence.ResidenceRequestDto;
 import com.resitechpro.domain.dto.response.residence.ResidenceResponseDto;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/residences")
+@RequestMapping("/api/v1/showcase/residences")
 public class ResidenceRest {
     private final ResidenceService residenceService;
     private final ResidenceMapper residenceMapper;

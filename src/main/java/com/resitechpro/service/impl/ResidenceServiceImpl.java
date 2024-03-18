@@ -33,8 +33,6 @@ public class ResidenceServiceImpl implements ResidenceService {
 
     @Override
     public Residence createResidence(Residence residence) {
-        /*Optional<Residence> optionalResidence = residenceRepository.findById(residence.getId());
-        if(optionalResidence.isPresent()) return optionalResidence.get();*/
         if(residence.getOwner() != null && (userRepository.findById(residence.getOwner().getId()).isEmpty())){
                 residence.setOwner(
                         userRepository.save(residence.getOwner())
