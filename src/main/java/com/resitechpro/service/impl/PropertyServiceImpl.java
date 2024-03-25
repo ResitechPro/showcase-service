@@ -1,6 +1,8 @@
 package com.resitechpro.service.impl;
 
+import com.resitechpro.domain.dto.request.property.SearchPropertyRequestDto;
 import com.resitechpro.domain.entity.Property;
+import com.resitechpro.domain.enums.PropertyType;
 import com.resitechpro.exception.customexceptions.ValidationException;
 import com.resitechpro.repository.ImageRepository;
 import com.resitechpro.repository.PropertyRepository;
@@ -51,5 +53,20 @@ public class PropertyServiceImpl implements PropertyService {
             );
         }
         return propertyRepository.save(property);
+    }
+
+    @Override
+    public List<Property> searchProperties(SearchPropertyRequestDto propertyRequestDto) {
+
+        if(propertyRequestDto.getPropertyType() != null && propertyRequestDto.getLocation() != null){
+            return propertyRepository.getPropertyByPropertyTypeAndResidenceLocation(
+                    PropertyType.valueOf(propertyRequestDto.getPropertyType()),
+                    propertyRequestDto.getLocation()
+            );
+        }
+        if(propertyRequestDto.getPropertyType() != null){
+            return propertyRepository.getPropertyByPropertyType(PropertyType.valueOf(propertyRequestDto.getPropertyType()));
+        }
+        return propertyRepository.getPropertyByResidenceLocation(propertyRequestDto.getLocation());
     }
 }

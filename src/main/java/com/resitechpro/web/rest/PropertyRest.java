@@ -1,6 +1,7 @@
 package com.resitechpro.web.rest;
 
 import com.resitechpro.domain.dto.request.property.PropertyRequestDto;
+import com.resitechpro.domain.dto.request.property.SearchPropertyRequestDto;
 import com.resitechpro.domain.dto.response.property.OnlyPropertyResponseDto;
 import com.resitechpro.domain.dto.response.property.PropertyResponseDto;
 import com.resitechpro.domain.mapper.PropertyMapper;
@@ -11,6 +12,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -58,6 +60,18 @@ public class PropertyRest {
                 )
         );
         response.setMessage("Property created successfully");
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<Response<List<PropertyResponseDto>>> searchProperties(@RequestBody SearchPropertyRequestDto propertyRequestDto) {
+        Response<List<PropertyResponseDto>> response = new Response<>();
+        response.setResult(
+                propertyService.searchProperties(propertyRequestDto).stream()
+                        .map(propertyMapper::toDto)
+                        .toList()
+        );
+        response.setMessage("Properties retrieved successfully");
         return ResponseEntity.ok(response);
     }
 }
