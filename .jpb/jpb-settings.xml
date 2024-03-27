@@ -10,9 +10,9 @@
   </component>
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default">
+      <persistence-unit name="Default" defaultIncludeChangeLogFile="src/main/resources/db/changelog/db.public.changelog-master.yml">
         <packages>
-          <package value="com.resitechpro.showcaseservice" />
+          <package value="com.resitechpro.domain.entity" />
         </packages>
       </persistence-unit>
     </persistence-units>

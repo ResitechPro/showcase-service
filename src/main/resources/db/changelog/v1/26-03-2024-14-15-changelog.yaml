@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1711464668903-1
+      author: idder
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_views
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: date
+                  type: DATE
+              - column:
+                  name: count
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: property_id
+                  type: VARCHAR(255)
+            tableName: views
+  - changeSet:
+      id: 1711464668903-2
+      author: idder
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: property_id
+            baseTableName: views
+            constraintName: FK_VIEWS_ON_PROPERTY
+            referencedColumnNames: id
+            referencedTableName: properties
+
